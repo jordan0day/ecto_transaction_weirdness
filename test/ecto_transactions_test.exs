@@ -4,6 +4,12 @@ defmodule EctoTransactionsTest do
   alias EctoTransactions.Repo
   alias Name
 
+  setup do
+    Repo.delete_all(Name)
+
+    :ok
+  end
+
   # The %Name{} table has a unique index on firstname, lastname, so attempts
   # to insert identical records will fail with a Postgrex error: 
   # "** (Postgrex.Error) ERROR (unique_violation): duplicate key value violates unique constraint "names_first_name_last_name_index"
